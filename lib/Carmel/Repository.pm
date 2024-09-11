@@ -81,7 +81,7 @@ sub find_dist {
         return Carmel::Artifact->load($dir);
     }
 
-    return $self->find_match($package, sub { $_[0]->distname eq $distname });
+    return $self->find_match($package, sub { $_[0]->distname =~ /^\Q$distname\E(?:-TRIAL)?$/ });
 }
 
 sub find_match {
